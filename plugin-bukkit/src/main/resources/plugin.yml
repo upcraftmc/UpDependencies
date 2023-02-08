@@ -1,0 +1,7 @@
+main: de.upcraftmc.dependencies.DependenciesPlugin
+name: DependenciesPlugin
+version: ${version}
+author:
+  - LuciferMoringstarDev
+description: Dependency Loader Plugin
+load: STARTUP

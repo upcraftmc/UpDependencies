@@ -1,0 +1,28 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+fun commitHash(): String = try {
+    val runtime = Runtime.getRuntime()
+    val process = runtime.exec("git rev-parse --short HEAD")
+    val out = process.inputStream
+    out.bufferedReader().readText().trim()
+} catch (ignored: Exception) {
+    "unknown"
+}
+
+val commit: String? = commitHash()
+
+dependencies {
+    compileOnly("com.velocitypowered:velocity-api:3.0.0")
+    annotationProcessor("com.velocitypowered:velocity-api:3.0.0")
+
+    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("org.mongodb:mongodb-driver-legacy:4.7.1")
+    implementation("redis.clients:jedis:4.3.0-m1")
+    implementation("net.dv8tion:JDA:5.0.0-beta.2")
+}
+
+tasks.named<ShadowJar>("shadowJar") {
+    this.archiveClassifier.set(null as String?)
+    this.archiveFileName.set("${project.name}-${project.version}.${this.archiveExtension.getOrElse("jar")}")
+    this.destinationDirectory.set(file("$projectDir/../out"))
+}
