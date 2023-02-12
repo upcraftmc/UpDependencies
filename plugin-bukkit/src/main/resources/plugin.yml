@@ -3,5 +3,6 @@ name: DependenciesPlugin
 version: ${version}
 author:
   - LuciferMoringstarDev
+api-version: 1.19
 description: Dependency Loader Plugin
 load: STARTUP

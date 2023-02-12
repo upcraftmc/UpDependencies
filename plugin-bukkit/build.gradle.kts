@@ -17,6 +17,7 @@ dependencies {
     implementation("com.google.code.gson:gson:2.9.1")
     implementation("org.mongodb:mongodb-driver-legacy:4.7.1")
     implementation("redis.clients:jedis:4.3.0-m1")
+    implementation("net.dv8tion:JDA:5.0.0-beta.2")
 }
 
 tasks.named<ShadowJar>("shadowJar") {
